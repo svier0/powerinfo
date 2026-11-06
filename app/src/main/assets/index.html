@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>PowerInfo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- Top bar: left title, right overflow menu -->
+  <header class="topbar">
+    <div class="topbar-title">PowerInfo</div>
+    <button class="icon-btn" id="btn-menu" title="更多">&#8942;</button>
+
+    <!-- Dropdown menu -->
+    <div class="dropdown hidden" id="dropdown">
+      <div class="dropdown-item" id="item-settings">设置</div>
+      <div class="dropdown-item" id="item-about">关于</div>
+    </div>
+  </header>
+
+  <main id="content" class="content">
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <div class="loading-text">正在读取电池信息…</div>
+    </div>
+  </main>
+
+  <!-- Settings page -->
+  <div class="overlay hidden" id="settings-overlay">
+    <div class="page">
+      <div class="page-header">
+        <button class="icon-btn" id="btn-back-settings" title="返回">&#8592;</button>
+        <div class="page-title">设置</div>
+        <div class="page-spacer"></div>
+      </div>
+      <label class="field-label">自定义 su 命令</label>
+      <input type="text" id="input-su" class="field" placeholder="留空 = 使用全局 su">
+      <div class="hint">默认使用全局 su 路径；填写后优先使用该命令。找不到 su 时提示需要 root 权限。</div>
+      <button class="btn" id="btn-save-settings">保存</button>
+    </div>
+  </div>
+
+  <!-- About dialog -->
+  <div class="overlay hidden" id="about-overlay">
+    <div class="dialog">
+      <div class="dialog-body">
+        <img class="dialog-icon" src="icon.png" alt="" onerror="this.style.display='none'">
+        <div class="dialog-icon-fallback">P</div>
+        <div class="dialog-text">
+          <div class="dialog-name">PowerInfo</div>
+          <div class="dialog-version">v1.0.0</div>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" id="btn-close-about">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
